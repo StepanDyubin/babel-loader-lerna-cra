@@ -11,7 +11,8 @@ module.exports = (webpackConfig, reactAppSrcDir) => {
                 return false;
             }
 
-            if (!loader.test.toString().includes('(js|mjs|jsx)')) {
+            const loaderTest = loader.test.toString();
+            if (!['js', 'mjs', 'jsx', 'ts', 'tsx'].every(ext => loaderTest.includes(ext))) {
                 return false;
             }
 
